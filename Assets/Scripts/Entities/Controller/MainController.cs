@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class MainController : MonoBehaviour
@@ -15,28 +16,31 @@ public class MainController : MonoBehaviour
 
     [SerializeField] private AttackSO currentAttackSO;
 
+    protected CharacterStatHandler stats { get; private set; }
     protected virtual void Awake()
     {
+        stats = GetComponent<CharacterStatHandler>();
         // 필요한 초기화 작업은 여기다가
     }
 
     private void Update()
     {
-        HandleAttackCooldown();
+        HandleAttackDelay();
     }
 
-    private void HandleAttackCooldown()
+    private void HandleAttackDelay()
     {
-        // 공격 딜레이 관리 
-        // 혹시몰라서 공격도 미리 긁어온상태
-        if (IsAttacking && timeSinceLastAttack >= currentAttackSO.delay) // AttackSO에서 딜레이 사용
-        {
-            timeSinceLastAttack = 0f;
-            CallAttackEvent(); 
-        }
-        else
+        // TODO:: MAGIC NUMBER 수정
+        if (timeSinceLastAttack < stats.CurrentStat.attackSO.delay)
         {
             timeSinceLastAttack += Time.deltaTime;
+        }
+        if (IsAttacking && timeSinceLastAttack >= stats.CurrentStat.attackSO.delay)
+        {
+            timeSinceLastAttack = 0f;
+            // 현재 장착된 무기의 attackSO전달
+            CallAttackEvent(stats.CurrentStat.attackSO);
+
         }
     }
 
@@ -51,8 +55,17 @@ public class MainController : MonoBehaviour
         OnLookEvent?.Invoke(direction); 
     }
 
-    public void CallAttackEvent()
+    public void CallAttackEvent(AttackSO attackSO)
     {
-        OnAttackEvent?.Invoke(currentAttackSO);
+        // PlayerShooting에서 등록한 OnShoot 메소드가 구독되어 있음.
+        if (attackSO != null)
+        {
+            // PlayerShooting에서 등록한 OnShoot 메소드가 구독되어 있음.
+            OnAttackEvent?.Invoke(attackSO);
+        }
+        else
+        {
+            Debug.LogError("AttackSO가 null임.");
+        }
     }
 }

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public class CharacterStatHandler : MonoBehaviour
 {
-    // 기본 스탯과 추가스텟들을 계산해서 최종 스텟을 계산하는 로직
-    // 지금은 기본스텟만
-
+    //스탯계산
     [SerializeField] private CharacterStat baseStats;
     public CharacterStat CurrentStat { get; private set; }
     public List<CharacterStat> statsModifiers = new List<CharacterStat>();
