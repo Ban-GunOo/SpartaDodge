@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : BaseEnemy
 {
   
-    [SerializeField] private Transform player;
+    
     [SerializeField] private EnemyStats enemyStats; // ScriptableObject ÂüÁ¶
     private float attackDamage;
     private float attackCooldown;
@@ -31,13 +31,13 @@ public class Enemy : BaseEnemy
 
     private void Update()
     {
-        HandlePlayerInteraction(player.position); 
+        HandlePlayerInteraction(DistanceToTarget());
     }
 
-    private void HandlePlayerInteraction(Vector2 playerPosition)
+    private void HandlePlayerInteraction(float distance)
     {
-        
-        float distance = Vector2.Distance(transform.position, playerPosition);
+
+        RotateTowards(DirectionToTarget());
 
         if (distance <= attackRange) 
         {
@@ -46,19 +46,19 @@ public class Enemy : BaseEnemy
         }
         else 
         {
-            MoveTowardsPlayer(playerPosition); 
+            MoveTowardsPlayer(distance, DirectionToTarget()); 
         }
     }
 
-    private void MoveTowardsPlayer(Vector2 playerPosition)
+    private void MoveTowardsPlayer(float distance , Vector2 direction)
     {
-        float distance = Vector2.Distance(transform.position, playerPosition);
+        
 
         if (distance > attackRange)
         {
-            Vector2 direction = (playerPosition - (Vector2)transform.position).normalized;
+            
             rb.velocity = direction * moveSpeed;
-            RotateTowards(direction);
+            
             CallMoveEvent(direction); 
         }
     }
