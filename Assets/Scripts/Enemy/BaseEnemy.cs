@@ -5,8 +5,13 @@ public class BaseEnemy : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
-    [SerializeField] protected GameObject TargetPlayer;
+    protected GameObject TargetPlayer;
 
+
+    private void Start()
+    {
+        TargetPlayer = GameObject.FindGameObjectWithTag("Player");
+    }
     public void CallMoveEvent(Vector2 direction)
     {
         OnMoveEvent?.Invoke(direction);
@@ -34,5 +39,4 @@ public class BaseEnemy : MonoBehaviour
 
 
 }
-
 

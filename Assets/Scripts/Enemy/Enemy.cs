@@ -24,7 +24,7 @@ public class Enemy : BaseEnemy
         {
             attackDamage = enemyStats.attackDamage; // 공격력
             attackCooldown = enemyStats.attackCooldown; // 공격 쿨타임
-            attackRange = enemyStats.attackRange; // 사거리 초기화
+            attackRange = enemyStats.attackRange; // 사거리 
             moveSpeed = enemyStats.moveSpeed; // 이동속도
         }
     }
@@ -38,7 +38,7 @@ public class Enemy : BaseEnemy
     {
 
         RotateTowards(DirectionToTarget());
-
+        Debug.Log(distance);
         if (distance <= attackRange) 
         {
             TryAttack(); 
@@ -52,15 +52,16 @@ public class Enemy : BaseEnemy
 
     private void MoveTowardsPlayer(float distance , Vector2 direction)
     {
-        
 
+        Debug.Log(distance > attackRange);
         if (distance > attackRange)
         {
-            
+            Debug.Log(moveSpeed);
             rb.velocity = direction * moveSpeed;
             
             CallMoveEvent(direction); 
         }
+       
     }
 
     private void TryAttack()
