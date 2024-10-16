@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1401825102066565343}
   - component: {fileID: 8909568215366303114}
+  - component: {fileID: -7202695737030815742}
   - component: {fileID: 8216128274608413189}
   - component: {fileID: 6326662631616712186}
   m_Layer: 0
@@ -48,6 +49,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: 4f726ac1c86cf2449bd89b8a57f664f3, type: 2}
+--- !u!114 &-7202695737030815742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311096792324275878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5571a049a209af4784791a03997a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8216128274608413189
 Rigidbody2D:
   serializedVersion: 4

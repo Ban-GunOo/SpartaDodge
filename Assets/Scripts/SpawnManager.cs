@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnPoint;
+    private GameObject spawnPoint;
     private ObjectPooled pool;
     private float time;
     private GameObject[] spawnPointArray;
@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
             return; // 배열이 비어있으면 메서드를 종료
         }
         int RandomIndex = Random.Range(0, spawnPointArray.Length);
-
+        
         pool.SpawnFromPool("Bat", spawnPointArray[RandomIndex]);
 
 
