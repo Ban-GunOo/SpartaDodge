@@ -20,7 +20,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void CallAttackEvent() 
     { 
-        OnAttackEvent?.Invoke(); 
+        OnAttackEvent?.Invoke();
+        Debug.Log("공격 이벤트 발생");
     }
 
     

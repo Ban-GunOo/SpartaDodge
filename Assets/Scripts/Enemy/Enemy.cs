@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : BaseEnemy
@@ -13,7 +14,10 @@ public class Enemy : BaseEnemy
     private float attackRange; 
     private float lastAttackTime;
     private float moveSpeed;
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
+
+    private int layerMaskLevel;
+    private int layerMaskTarget;
 
     private void Awake()
     {
@@ -68,8 +72,17 @@ public class Enemy : BaseEnemy
     {
         if (CanAttack())
         {
-            CallAttackEvent(); 
-            lastAttackTime = Time.time;
+            Debug.Log("공격허가");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, DirectionToTarget(), attackRange);
+            Debug.Log(hit.collider.name);
+       
+            if (hit.collider != null) // "Player" 태그 확인
+            {      
+                Debug.Log("공격성공");
+                CallAttackEvent();
+                lastAttackTime = Time.time;
+            }
+
         }
     }
 
@@ -83,6 +96,14 @@ public class Enemy : BaseEnemy
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)DirectionToTarget() * attackRange);
+    }
+
+
 }
 
 
