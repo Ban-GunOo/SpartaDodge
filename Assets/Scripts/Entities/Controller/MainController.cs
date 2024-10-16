@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
+    GameManager gameManager;
+    protected Transform ClosestTarget { get; private set; }
+
     // 이동, 조준, 공격 이벤트
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
@@ -21,6 +24,12 @@ public class MainController : MonoBehaviour
     {
         stats = GetComponent<CharacterStatHandler>();
         // 필요한 초기화 작업은 여기다가
+    }
+    protected virtual void Start()
+    {
+        gameManager = GameManager.Instance;
+        ClosestTarget = gameManager.Player;
+        //Debug.Log(ClosestTarget.transform.position);
     }
 
     private void Update()
