@@ -4457,7 +4457,10 @@ GameObject:
   - component: {fileID: 7212207566285714396}
   - component: {fileID: 7905577273658381395}
   - component: {fileID: 5223928878293861292}
-  m_Layer: 0
+  - component: {fileID: 7905577273658381397}
+  - component: {fileID: 7905577273658381396}
+  - component: {fileID: 7905577273658381398}
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4514,7 +4517,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4585,6 +4588,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7905577273658381396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621084843304071408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6fdc6d5a04f4d48ae2d08fdd963fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7905577273658381397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621084843304071408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863ac2aba496f604bb80f130f9c22085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7905577273658381398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621084843304071408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46fcc3f39fdb5b458099e2637dabb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: 4f726ac1c86cf2449bd89b8a57f664f3, type: 2}
 --- !u!1 &8269074741151041570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,7 +4636,7 @@ GameObject:
   - component: {fileID: 6410094448725869422}
   - component: {fileID: 1238630135647834648}
   - component: {fileID: 5008186021009708100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

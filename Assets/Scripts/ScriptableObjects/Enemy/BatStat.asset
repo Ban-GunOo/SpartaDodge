@@ -16,3 +16,6 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 1
   moveSpeed: 5
+  maxHealth: 20
+  speed: 0
+  BatStats: {fileID: 11400000}
