@@ -57,11 +57,12 @@ public class ProjectileController : MonoBehaviour
         // 적과 충돌한 경우
         else if (IsLayerMatched(targetLayer.value, collision.gameObject.layer))
         {
-            // 적에게 데미지를 주는 로직 추가 (필요 시 확장 가능)
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy != null)
+            // 충돌한 오브젝트에서 HealthSystem 컴포넌트를 가져오기
+            HealthSystem healthSystem = collision.GetComponent<HealthSystem>();
+            if (healthSystem != null)
             {
-              // 발사체의 데미지 적용
+                // 충돌한 오브젝트의 체력 감소시키기
+                healthSystem.ChangeHealth(-attackData.power);
             }
             DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestroy);
         }
