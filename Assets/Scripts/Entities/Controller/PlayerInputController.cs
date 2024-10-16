@@ -32,9 +32,17 @@ public class PlayerInputController : MainController
     }
 
 
-    //혹시몰라서 공격도 미리긁어온상태
     public void OnFire(InputValue value)
     {
-    //    IsAttacking = value.isPressed; 
+        if (value.isPressed)
+        {
+            IsAttacking = true;
+            CallAttackEvent(stats.CurrentStat.attackSO); 
+        }
+        else
+        {
+            IsAttacking = false;
+        }
+
     }
 }
