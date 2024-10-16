@@ -5,6 +5,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "EnemyStats", menuName = "ScriptableObjects/Enemy/EnemyStats", order = 1)]
+
 public class EnemyStats : ScriptableObject
 {
     public float attackRange; // 공격 사거리

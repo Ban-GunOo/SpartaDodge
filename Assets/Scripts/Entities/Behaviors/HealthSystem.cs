@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    private EnemyStatHandler statsHandler;
+    private CharacterStatHandler statsHandler;
     private bool isAttacked = false;
 
     // 체력이 변했을 때 할 행동들을 정의하고 적용 가능
@@ -16,7 +16,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Awake()
     {
-        statsHandler = GetComponent<EnemyStatHandler>();
+        statsHandler = GetComponent<CharacterStatHandler>();
     }
 
     private void Start()

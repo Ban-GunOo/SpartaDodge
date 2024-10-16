@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Enemy : BaseEnemy
 {
-  
-    
-    [SerializeField] private EnemyStats enemyStats; // ScriptableObject 참조
+    [SerializeField] private CharacterStatHandler characterStatHandler; // ScriptableObject 참조
     private float attackDamage;
     private float attackCooldown;
     private float attackRange; 
@@ -24,12 +22,16 @@ public class Enemy : BaseEnemy
         rb = GetComponent<Rigidbody2D>();
 
 
-        if (enemyStats != null)
+        if (characterStatHandler != null)
         {
-            attackDamage = enemyStats.attackDamage; // 공격력
-            attackCooldown = enemyStats.attackCooldown; // 공격 쿨타임
-            attackRange = enemyStats.attackRange; // 사거리 
-            moveSpeed = enemyStats.moveSpeed; // 이동속도
+            //attackDamage = enemyStats.attackDamage; // 공격력
+            //attackCooldown = enemyStats.attackCooldown; // 공격 쿨타임
+            //attackRange = enemyStats.attackRange; // 사거리 
+            //moveSpeed = enemyStats.moveSpeed; // 이동속도
+            attackDamage = characterStatHandler.CurrentStat.attackSO.power;
+            attackCooldown = characterStatHandler.CurrentStat.attackSO.delay;
+            attackRange = characterStatHandler.CurrentStat.attackSO.size;
+            moveSpeed = characterStatHandler.CurrentStat.speed;
         }
     }
 
