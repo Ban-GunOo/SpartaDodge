@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPooled : MonoBehaviour
 {
     
     [System.Serializable]

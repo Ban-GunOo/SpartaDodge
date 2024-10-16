@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject spawnPoint;
-    private ObjectPool pool;
+    private ObjectPooled pool;
     private float time;
     private GameObject[] spawnPointArray;
 
@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     {
 
         spawnPointArray = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        pool = GetComponent<ObjectPool>();
+        pool = GetComponent<ObjectPooled>();
     }
     void Start()
     {
